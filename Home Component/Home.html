@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="Home.css">
+   
+    
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="#">Inventory Management</a></div>
+            <ul>
+              <li class="item"><a href="../Home Component/Home.html">Home</a></li>
+              <li class="item"><a href="../Dashboard/Dash.html">Dashboard</a></li>
+              <li class="item has-submenu">
+                <a href="#">Products <i class="fas fa-chevron-down"></i></a>
+                <ul class="submenu">
+                  <li class="item"><a href="#">Add Product</a></li>
+                  <li class="item"><a href="#">Edit Product</a></li>
+                  <li class="item"><a href="#">View Products</a></li>
+                </ul>
+              </li>
+              <li class="item"><a href="#">Orders</a></li>
+              <li class="item"><a href="#">Inventory</a></li>
+              <li class="item"><a href="#">Customers</a></li>
+              <li class="item button primary"><a href="../Login/Login.html">Login</a> </li>
+              <li class="item button secondary"><a href="../SignUp/Signup.html">SignUp</a></li>
+            </ul>
+          </nav>
+          <div class="slider">
+            <img id="img-1" src="../Images/slider1.webp" alt="Image 1"/>
+            <img id="img-2" src="../Images/slider2.webp" alt="Image 2"/>
+            <img id="img-3" src="../Images/slider3.jpg" alt="Image 3"/>
+          </div>
+          
+          <div class="navigation-button">
+            <span class="dot active" onclick="changeSlide(0)"></span>
+            <span class="dot" onclick="changeSlide(1)"></span>
+            <span class="dot" onclick="changeSlide(2)"></span>
+          </div>
+    </header>
+
+    
+</body>
+<script src="Home.js"></script>
+<script>
+    var imgs = document.querySelectorAll('.slider img');
+var dots = document.querySelectorAll('.dot');
+var currentImg = 0; // index of the first image 
+const interval = 3000; // duration(speed) of the slide
+
+function changeSlide(n) {
+  for (var i = 0; i < imgs.length; i++) { // reset
+    imgs[i].style.opacity = 0;
+    dots[i].className = dots[i].className.replace(' active', '');
+  }
+
+  currentImg = (currentImg + 1) % imgs.length; // update the index number
+
+  if (n != undefined) {
+    clearInterval(timer);
+    timer = setInterval(changeSlide, interval);
+    currentImg = n;
+  }
+
+  imgs[currentImg].style.opacity = 1;
+  dots[currentImg].className += ' active';
+}
+
+changeSlide();
+
+var timer = setInterval(changeSlide, interval);
+</script>
+</html>
