@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
         echo "<script>alert('Please Fill Password');</script>";
         exit;
     } elseif (empty($_POST['username'])) {
-        echo "<script>alert('Please Fill Username);</script>";
+        echo "<script>alert('Please Fill Username');</script>";
         exit;
     } else {
         if (mysqli_num_rows($result) > 0) {
